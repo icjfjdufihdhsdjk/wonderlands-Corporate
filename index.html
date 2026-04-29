@@ -1,332 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dream Entry Systems - Employee Portal</title>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Entry Systems - Employee Hub</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #d6d6d6;
-      font-family: Arial, Verdana, sans-serif;
-      font-size: 13px;
-      color: #111;
-    }
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#eef2f7;
+color:#222;
+}
 
-    .container {
-      width: 900px;
-      margin: 20px auto;
-      background: white;
-      border: 1px solid #444;
-      box-shadow: 4px 4px 0 #777;
-    }
+header{
+background:#0b3d91;
+color:white;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
 
-    .topbar {
-      background: #222;
-      color: #eee;
-      padding: 5px 10px;
-      font-size: 11px;
-      text-align: right;
-    }
+.logo{
+font-size:30px;
+font-weight:bold;
+letter-spacing:1px;
+}
 
-    .header {
-      background: linear-gradient(#ffffff, #cfcfcf);
-      padding: 14px;
-      border-bottom: 2px solid #222;
-    }
+.logo span{
+color:#7dd3ff;
+}
 
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      font-family: Georgia;
-    }
+nav button{
+margin-left:8px;
+padding:10px 14px;
+border:none;
+background:white;
+color:#0b3d91;
+font-weight:bold;
+cursor:pointer;
+border-radius:4px;
+}
 
-    .nav {
-      background: #e8e8e8;
-      padding: 7px;
-      text-align: center;
-      border-bottom: 1px solid #aaa;
-    }
+nav button:hover{
+background:#dbeafe;
+}
 
-    .button {
-      padding: 4px 9px;
-      margin: 2px;
-      background: #f5f5f5;
-      border: 2px outset #ddd;
-      cursor: pointer;
-    }
+.hero{
+height:280px;
+background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:40px;
+color:white;
+}
 
-    .main {
-      display: flex;
-      padding: 10px;
-      gap: 10px;
-    }
+.hero-box{
+max-width:500px;
+}
 
-    .sidebar {
-      width: 210px;
-      background: #f1f1f1;
-      border: 1px solid #aaa;
-      padding: 8px;
-      line-height: 1.6;
-    }
+.hero h1{
+font-size:38px;
+margin:0 0 10px 0;
+}
 
-    .content {
-      flex: 1;
-      border: 1px solid #999;
-      padding: 12px;
-      min-height: 420px;
-    }
+.hero p{
+font-size:18px;
+line-height:1.5;
+}
 
-    .status {
-      background: black;
-      color: #66ff66;
-      font-family: monospace;
-      padding: 10px;
-      margin: 10px 0;
-    }
+.container{
+width:1100px;
+max-width:95%;
+margin:auto;
+padding:25px 0;
+}
 
-    .log {
-      background: #111;
-      color: #ccc;
-      font-family: monospace;
-      padding: 10px;
-      margin: 10px 0;
-      line-height: 1.6;
-    }
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
 
-    .warning {
-      color: darkred;
-      font-weight: bold;
-    }
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
 
-    .small {
-      font-size: 11px;
-      color: #555;
-    }
-  </style>
+h2{
+margin-top:0;
+color:#0b3d91;
+}
+
+.news-item{
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.news-item:last-child{
+border-bottom:none;
+}
+
+.small{
+font-size:13px;
+color:#666;
+}
+
+.tag{
+display:inline-block;
+padding:4px 8px;
+background:#e0f2fe;
+color:#0369a1;
+border-radius:4px;
+font-size:12px;
+margin-top:6px;
+}
+
+.secret{
+font-size:13px;
+color:#444;
+margin-top:8px;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+font-size:12px;
+color:#666;
+}
+</style>
 </head>
 
 <body>
 
-<!-- PASSWORD GATE -->
-<div id="gate" style="
-position:fixed;
-inset:0;
-background:#d6d6d6;
-z-index:9999;
-display:flex;
-justify-content:center;
-align-items:center;
-">
+<header>
+<div class="logo">Dream <span>Entry</span> Systems</div>
 
-<div style="background:white;padding:30px;border:1px solid #777;box-shadow:0 0 20px rgba(0,0,0,0.3);width:420px;">
+<nav>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('departments')">Departments</button>
+<button onclick="showPage('benefits')">Benefits</button>
+<button onclick="showPage('security')">Security</button>
+<button onclick="showPage('directory')">Directory</button>
+</nav>
+</header>
 
-<h2>Employee Access Required</h2>
+<div id="content">
 
-<p class="small">
-Dream Entry Systems Internal Recovery Portal<br>
-Archived Network Build 12/11/2005
+<div class="hero">
+<div class="hero-box">
+<h1>Welcome Back</h1>
+<p>
+Internal Employee Hub for Dream Entry Systems.<br>
+Innovation Through Sleep Since 2001.
 </p>
-
-<input id="password" type="password" placeholder="Password">
-<button onclick="checkPass()">Enter</button>
-
-<div id="error" style="color:red;margin-top:10px;"></div>
-
 </div>
 </div>
 
 <div class="container">
+<div class="grid">
 
-<div class="topbar">
-Employee Network | DES-PRIVATE | Recovery Mode
+<div class="card">
+<h2>Company News</h2>
+
+<div class="news-item">
+<b>Q4 Performance Above Expectations</b><br>
+<span class="small">Retail division exceeded projections.</span>
 </div>
 
-<div class="header">
-<div class="logo">Dream Entry Systems</div>
-<div class="small">Internal Operations & Research Access</div>
+<div class="news-item">
+<b>Transit Schedule Updated</b><br>
+<span class="small">Wonderlands shuttle times revised for night staff.</span>
 </div>
 
-<div class="nav">
-<span class="button" onclick="showPage('home')">Home</span>
-<span class="button" onclick="showPage('manual')">Manual</span>
-<span class="button" onclick="showPage('rooms')">Rooms</span>
-<span class="button" onclick="showPage('logs')">Logs</span>
-<span class="button" onclick="showPage('hart')">Personnel</span>
+<div class="news-item">
+<b>Reminder</b><br>
+<span class="small">Employees must wear neural badges in restricted sectors.</span>
 </div>
 
-<div class="main">
-
-<div class="sidebar">
-<b>System Status</b><br><br>
-
-Portal: ONLINE<br>
-Archive: PARTIAL<br>
-Camera Link: ACTIVE<br>
-Employee Count: 12 Missing<br>
-Public Storefront: LOCKED<br>
-W-04: UNLISTED<br>
-Door State: UNKNOWN<br><br>
-
-<span class="warning">Sleep on site prohibited.</span>
+<div class="news-item">
+<b>Health & Wellness Week</b><br>
+<span class="small">Free sleep assessments available in Clinic B.</span>
 </div>
 
-<div id="content" class="content"></div>
+</div>
+
+<div class="card">
+<h2>Quick Access</h2>
+
+<div class="tag">Payroll</div><br><br>
+<div class="tag">Schedule</div><br><br>
+<div class="tag">Badge Request</div><br><br>
+<div class="tag">Exposure Claims</div><br><br>
+<div class="tag">Transit Pass</div>
+
+<p class="secret">
+Employees returning from extended sessions must report memory drift immediately.
+</p>
 
 </div>
+
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+Dream Entry Systems Internal Network • Employee Build 2008
 </div>
 
 <script>
 
-function checkPass() {
-  const pass = document.getElementById("password").value;
-  const error = document.getElementById("error");
+function showPage(page){
 
-  if (pass === "Dream Entry") {
-    document.getElementById("gate").style.display = "none";
-    showPage("home");
-  } else {
-    error.innerHTML = "ACCESS DENIED";
-  }
+const c = document.getElementById("content");
+
+if(page==="home"){
+location.reload();
 }
 
-function showPage(page) {
-  const content = document.getElementById("content");
+if(page==="departments"){
+c.innerHTML = `
+<div class="container">
+<div class="card">
+<h2>Departments</h2>
 
-  if (page === "home") {
-    content.innerHTML = `
-      <h2>Emergency Archive Restored</h2>
+<ul>
+<li>Retail Products Division</li>
+<li>Human Resources</li>
+<li>Behavioral Research</li>
+<li>Neural Mapping</li>
+<li>Wonderlands Operations</li>
+<li>Return Processing</li>
+</ul>
 
-      <div class="status">
-USER STATUS: ACTIVE
-LAST UPDATE: 12/11/2005
-SYSTEM MODE: ARCHIVE
-PUBLIC VERSION: TERMINATED
-W-04 ACCESS: BLOCKED
-      </div>
+<p class="small">
+Cross-department access requires Level 3 clearance.
+</p>
+</div>
+</div>
+`;
+}
 
-      <p>
-        This portal was automatically restored after the shutdown of external retail operations.
-      </p>
+if(page==="benefits"){
+c.innerHTML = `
+<div class="container">
+<div class="card">
+<h2>Employee Benefits</h2>
 
-      <p>
-        12 employees remain unaccounted for.<br>
-        Badge activity continues to be detected.
-      </p>
+<ul>
+<li>Dental Coverage</li>
+<li>Vision Coverage</li>
+<li>Retirement Plan</li>
+<li>Dream Exposure Compensation</li>
+<li>Extended Session Family Support</li>
+<li>Return Counseling</li>
+</ul>
 
-      <p class="warning">
-        If you did not work here, leave immediately.
-      </p>
-    `;
-  }
+<p class="small">
+Benefits may vary after cognitive duplication events.
+</p>
+</div>
+</div>
+`;
+}
 
-  if (page === "manual") {
-    content.innerHTML = `
-      <h2>Employee Manual (Revision 7)</h2>
+if(page==="security"){
+c.innerHTML = `
+<div class="container">
+<div class="card">
+<h2>Security Guidelines</h2>
 
-      <div class="log">
-1. Do not enter unassigned rooms.
+<ul>
+<li>Never follow unbadged personnel.</li>
+<li>Report duplicate badge scans immediately.</li>
+<li>Returned subjects may not enter cafeterias.</li>
+<li>If you encounter yourself, contact Security.</li>
+<li>Do not remain in Wonderlands after recall tone.</li>
+</ul>
+</div>
+</div>
+`;
+}
 
-2. If you hear your own voice, do not answer.
+if(page==="directory"){
+c.innerHTML = `
+<div class="container">
+<div class="card">
+<h2>Employee Directory</h2>
 
-3. If a coworker asks to be let out, verify identity twice.
+<ul>
+<li>M. Hart — Senior Architect</li>
+<li>Elena Voss — Transit Lead</li>
+<li>Daniel Crowe — Return Processing</li>
+<li>Sarah Lin — Memory Health</li>
+<li>12 Records Unavailable</li>
+</ul>
 
-4. If a door opens onto an unknown space, leave it open.
+<p class="small">
+Some personnel files archived after Incident 11/12.
+</p>
+</div>
+</div>
+`;
+}
 
-5. Do not speak to anyone visible through it.
-
-6. Do not sleep on company property.
-
-7. If Room W-04 appears on any map, report immediately.
-      </div>
-
-      <p class="small">
-        Safety standards adjusted after Incident Cluster B.
-      </p>
-    `;
-  }
-
-  if (page === "rooms") {
-    content.innerHTML = `
-      <h2>Room Index</h2>
-
-      <div class="log">
-A-01 : Reception
-
-B-12 : Storage (door open)
-
-C-07 : Break Room
-
-D-03 : Testing Bay
-
-W-04 : Observation Sector
-Status: sealed
-Last occupant: M. Hart
-Return status: unresolved
-      </div>
-
-      <p class="warning">
-        W-04 does not appear in original blueprints.
-      </p>
-    `;
-  }
-
-  if (page === "logs") {
-    content.innerHTML = `
-      <h2>System Logs</h2>
-
-      <div class="log">
-[03:12] Backup started
-
-[03:14] External storefront locked
-
-[03:19] Door left open
-
-[03:21] Room W-04 detected
-
-[03:22] Employee entered W-04
-
-[03:24] Door closed automatically
-
-[03:29] Internal camera shows subject inside
-
-[04:01] Same subject visible in hallway
-
-[04:03] Employee not found
-      </div>
-
-      <p class="small">
-        Remaining log entries corrupted.
-      </p>
-    `;
-  }
-
-  if (page === "hart") {
-    content.innerHTML = `
-      <h2>Personnel File</h2>
-
-      <div class="log">
-NAME: Marcus Hart
-
-POSITION: Senior Dream Architect
-
-ACCESS LEVEL: 4
-
-LAST REQUEST:
-"Close W-04 permanently."
-
-STATUS:
-Missing since 12/11/2005
-
-BADGE STATUS:
-Still scans daily at 03:22
-      </div>
-
-      <p class="warning">
-        Audio memo associated with this file unavailable.
-      </p>
-    `;
-  }
 }
 
 </script>
