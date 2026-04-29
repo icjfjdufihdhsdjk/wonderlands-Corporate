@@ -1,319 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dream Entry Systems - Employee Hub</title>
+  <title>Dream Entry Systems - Employee Portal</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      background: #d6d6d6;
+      font-family: Arial, Verdana, sans-serif;
+      font-size: 13px;
+      color: #111;
+    }
 
-<style>
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#eef2f7;
-color:#222;
-}
+    a {
+      color: #0000ee;
+      text-decoration: underline;
+      cursor: pointer;
+    }
 
-header{
-background:#0b3d91;
-color:white;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 8px rgba(0,0,0,0.2);
-}
+    .container {
+      width: 930px;
+      margin: 18px auto;
+      background: white;
+      border: 1px solid #444;
+      box-shadow: 4px 4px 0 #777;
+    }
 
-.logo{
-font-size:30px;
-font-weight:bold;
-letter-spacing:1px;
-}
+    .topbar {
+      background: #222;
+      color: #eee;
+      padding: 5px 10px;
+      font-size: 11px;
+      text-align: right;
+    }
 
-.logo span{
-color:#7dd3ff;
-}
+    .header {
+      background: linear-gradient(#ffffff, #cfcfcf);
+      padding: 14px;
+      border-bottom: 2px solid #222;
+    }
 
-nav button{
-margin-left:8px;
-padding:10px 14px;
-border:none;
-background:white;
-color:#0b3d91;
-font-weight:bold;
-cursor:pointer;
-border-radius:4px;
-}
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: Georgia, serif;
+      color: #222;
+    }
 
-nav button:hover{
-background:#dbeafe;
-}
+    .subtitle {
+      color: #555;
+      font-size: 12px;
+      margin-top: 4px;
+    }
 
-.hero{
-height:280px;
-background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
-url("https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-padding:40px;
-color:white;
-}
+    .notice {
+      background: #ffffcc;
+      color: #663300;
+      font-weight: bold;
+      text-align: center;
+      padding: 7px;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #aaa;
+    }
 
-.hero-box{
-max-width:500px;
-}
+    .nav {
+      background: #e8e8e8;
+      padding: 7px;
+      text-align: center;
+      border-bottom: 1px solid #aaa;
+    }
 
-.hero h1{
-font-size:38px;
-margin:0 0 10px 0;
-}
+    .button {
+      display: inline-block;
+      padding: 4px 9px;
+      margin: 2px;
+      background: #f5f5f5;
+      border: 2px outset #ddd;
+      cursor: pointer;
+      font-size: 12px;
+    }
 
-.hero p{
-font-size:18px;
-line-height:1.5;
-}
+    .button:hover {
+      background: #ffffff;
+    }
 
-.container{
-width:1100px;
-max-width:95%;
-margin:auto;
-padding:25px 0;
-}
+    .main {
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-}
+    .sidebar {
+      width: 205px;
+      background: #f1f1f1;
+      border: 1px solid #aaa;
+      padding: 8px;
+    }
 
-.card{
-background:white;
-padding:20px;
-border-radius:8px;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
+    .side-title {
+      background: #333;
+      color: white;
+      padding: 5px;
+      font-weight: bold;
+      font-size: 12px;
+      margin: -8px -8px 8px -8px;
+    }
 
-h2{
-margin-top:0;
-color:#0b3d91;
-}
+    .side-box {
+      background: white;
+      border: 1px solid #aaa;
+      padding: 7px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
 
-.news-item{
-padding:10px 0;
-border-bottom:1px solid #eee;
-}
+    .content {
+      flex: 1;
+      border: 1px solid #999;
+      padding: 12px;
+      min-height: 470px;
+      background: #fff;
+    }
 
-.news-item:last-child{
-border-bottom:none;
-}
+    .status {
+      background: black;
+      color: #66ff66;
+      font-family: monospace;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #333;
+    }
 
-.small{
-font-size:13px;
-color:#666;
-}
+    .log {
+      background: #111;
+      color: #ccc;
+      font-family: monospace;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #333;
+      line-height: 1.45;
+    }
 
-.tag{
-display:inline-block;
-padding:4px 8px;
-background:#e0f2fe;
-color:#0369a1;
-border-radius:4px;
-font-size:12px;
-margin-top:6px;
-}
+    .memo {
+      border: 1px solid #aaa;
+      background: #f7f7f7;
+      padding: 10px;
+      margin: 10px 0;
+    }
 
-.secret{
-font-size:13px;
-color:#444;
-margin-top:8px;
-}
+    .memo-title {
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+    }
 
-.footer{
-text-align:center;
-padding:30px;
-font-size:12px;
-color:#666;
-}
-</style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    td, th {
+      border: 1px solid #aaa;
+      padding: 6px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ddd;
+    }
+
+    input {
+      font-family: Arial, Verdana, sans-serif;
+      font-size: 12px;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+
+    textarea {
+      font-family: Arial, Verdana, sans-serif;
+      font-size: 12px;
+      padding: 5px;
+      border: 1px solid #999;
+      width: 96%;
+      height: 90px;
+    }
+
+    .submit-btn {
+      border: 2px outset #ddd;
+      background: #eee;
+      padding: 5px 12px;
+      cursor: pointer;
+      margin: 3px;
+      font-size: 12px;
+    }
+
+    .small {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .restricted {
+      color: darkred;
+      font-weight: bold;
+    }
+
+    .ok {
+      color: darkgreen;
+      font-weight: bold;
+    }
+
+    .warn {
+      color: darkred;
+      font-weight: bold;
+    }
+
+    .folder {
+      background: #ffffee;
+      border: 1px solid #aaa;
+      padding: 8px;
+      margin: 6px 0;
+      cursor: pointer;
+    }
+
+    .folder:hover {
+      background: #fff8cc;
+    }
+
+    .footer {
+      background: #e8e8e8;
+      border-top: 1px solid #aaa;
+      color: #555;
+      font-size: 11px;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .gate {
+      position: fixed;
+      inset: 0;
+      background: #d6d6d6;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gate-box {
+      width: 540px;
+      background: white;
+      border: 1px solid #777;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .gate-top {
+      border-top: 8px solid #222;
+      padding: 18px 24px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .gate-title {
+      font-size: 19px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .gate-subtitle {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .gate-content {
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .gate-error {
+      color: darkred;
+      font-size: 12px;
+      margin-top: 12px;
+      font-family: monospace;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .slide-box {
+      background: #111;
+      color: #ccc;
+      font-family: monospace;
+      padding: 14px;
+      border: 1px solid #333;
+      min-height: 190px;
+      line-height: 1.55;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #333;
+      color: white;
+      padding: 2px 6px;
+      margin: 2px;
+      font-size: 11px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<div class="logo">Dream <span>Entry</span> Systems</div>
+<div id="gate" class="gate">
+  <div class="gate-box">
+    <div class="gate-top">
+      <div class="gate-title">Dream Entry Systems</div>
+      <div class="gate-subtitle">Private Employee Portal</div>
+    </div>
 
-<nav>
-<button onclick="showPage('home')">Home</button>
-<button onclick="showPage('departments')">Departments</button>
-<button onclick="showPage('benefits')">Benefits</button>
-<button onclick="showPage('security')">Security</button>
-<button onclick="showPage('directory')">Directory</button>
-</nav>
-</header>
+    <div class="gate-content">
+      <h2>Employee Access Required</h2>
 
-<div id="content">
+      <p>
+        This system is restricted to authorized Dream Entry Systems personnel.
+        Access attempts are logged by DES-PRIVATE.
+      </p>
 
-<div class="hero">
-<div class="hero-box">
-<h1>Welcome Back</h1>
-<p>
-Internal Employee Hub for Dream Entry Systems.<br>
-Innovation Through Sleep Since 2001.
-</p>
-</div>
+      <input id="password" type="password" placeholder="Password">
+      <button class="submit-btn" onclick="checkPass()">Enter</button>
+
+      <div id="error" class="gate-error"></div>
+
+      <p class="small">
+        Password assistance is unavailable in archived mode.
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-<div class="grid">
 
-<div class="card">
-<h2>Company News</h2>
+  <div class="topbar">
+    Employee Network | DES-PRIVATE-02 | Session: Temporary | Secure Backup Mode
+  </div>
 
-<div class="news-item">
-<b>Q4 Performance Above Expectations</b><br>
-<span class="small">Retail division exceeded projections.</span>
-</div>
+  <div class="header">
+    <div class="logo">Dream Entry Systems</div>
+    <div class="subtitle">Private Employee Portal — Internal Use Only</div>
+  </div>
 
-<div class="news-item">
-<b>Transit Schedule Updated</b><br>
-<span class="small">Wonderlands shuttle times revised for night staff.</span>
-</div>
+  <div class="notice">
+    NOTICE: Archived copy restored from internal backup — 12/11/2005
+  </div>
 
-<div class="news-item">
-<b>Reminder</b><br>
-<span class="small">Employees must wear neural badges in restricted sectors.</span>
-</div>
+  <div class="nav">
+    <span class="button" onclick="showPage('home')">Home</span>
+    <span class="button" onclick="showPage('manual')">Manual</span>
+    <span class="button" onclick="showPage('training')">Training Slides</span>
+    <span class="button" onclick="showPage('rooms')">Rooms</span>
+    <span class="button" onclick="showPage('floor')">Floor Plan</span>
+    <span class="button" onclick="showPage('incidents')">Incidents</span>
+    <span class="button" onclick="showPage('mail')">Internal Mail</span>
+    <span class="button" onclick="showPage('admin')">Admin</span>
+  </div>
 
-<div class="news-item">
-<b>Health & Wellness Week</b><br>
-<span class="small">Free sleep assessments available in Clinic B.</span>
-</div>
+  <div class="main">
 
-</div>
+    <div class="sidebar">
+      <div class="side-title">System Status</div>
+      <div class="side-box">
+        Portal: <span class="ok">ONLINE</span><br>
+        Backup: PARTIAL<br>
+        Camera Link: ACTIVE<br>
+        W-04: <span class="restricted">UNLISTED</span><br>
+        Storage B: OPEN<br>
+        North Hall: VARIABLE
+      </div>
 
-<div class="card">
-<h2>Quick Access</h2>
+      <div class="side-title">Employee Tools</div>
+      <div class="side-box">
+        <a onclick="showPage('manual')">Manual</a><br>
+        <a onclick="showPage('training')">Training Slides</a><br>
+        <a onclick="showPage('rooms')">Room Index</a><br>
+        <a onclick="showPage('incidents')">Incident Log</a><br>
+        <a onclick="showPage('mail')">Internal Mail</a>
+      </div>
 
-<div class="tag">Payroll</div><br><br>
-<div class="tag">Schedule</div><br><br>
-<div class="tag">Badge Request</div><br><br>
-<div class="tag">Exposure Claims</div><br><br>
-<div class="tag">Transit Pass</div>
+      <div class="side-title">Shift Notice</div>
+      <div class="side-box">
+        Night employees must remain in assigned areas after 03:00.
+      </div>
 
-<p class="secret">
-Employees returning from extended sessions must report memory drift immediately.
-</p>
+      <div class="side-title">Reminder</div>
+      <div class="side-box">
+        Do not close doors that open onto unlisted areas.
+      </div>
+    </div>
 
-</div>
+    <div id="content" class="content"></div>
 
-</div>
-</div>
+  </div>
 
-</div>
+  <div class="footer">
+    © 2005 Dream Entry Systems Inc. — Employee Portal Backup<br>
+    Internal file server: DES-PRIVATE-02 | Last restore packet: 03:22
+  </div>
 
-<div class="footer">
-Dream Entry Systems Internal Network • Employee Build 2008
 </div>
 
 <script>
+let unlocked = false;
+let currentSlide = 0;
+let adminUnlocked = false;
 
-function showPage(page){
+const slides = [
+  {
+    title: "Employee Orientation",
+    body: "Welcome to Dream Entry Systems. This presentation covers basic conduct, internal access, room safety, and reporting procedures."
+  },
+  {
+    title: "Identification Badges",
+    body: "Badges must be worn during all scheduled shifts. If your badge is detected in a room you have not entered, report this to the night operator."
+  },
+  {
+    title: "Hallway Conduct",
+    body: "Employees should use marked hallways only. Do not take shortcuts through doors without room labels."
+  },
+  {
+    title: "After-Hours Policy",
+    body: "After 03:00, employees must remain in their assigned areas. If hallway lights remain on, do not investigate alone."
+  },
+  {
+    title: "Door Policy",
+    body: "If a door opens onto an area not listed on the floor plan, leave it open. Do not close it from this side."
+  },
+  {
+    title: "Storage B",
+    body: "Storage B may appear in different hallway positions after backup restoration. This is a known mapping issue."
+  },
+  {
+    title: "W-Series Rooms",
+    body: "W-series rooms are not employee workspaces. Do not enter W-series rooms unless your supervisor provides written instructions."
+  },
+  {
+    title: "Visitor Policy",
+    body: "Do not admit visitors without appointment records. If the visitor knows your name but is not listed, contact the night operator."
+  },
+  {
+    title: "Break Room Notice",
+    body: "The break room vending machine is out of service. Do not accept items dispensed after power loss."
+  },
+  {
+    title: "Final Reminder",
+    body: "Do not speak to anyone visible through an open door. They are not employees."
+  }
+];
 
-const c = document.getElementById("content");
+function checkPass() {
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("error");
 
-if(page==="home"){
-location.reload();
+  if (pass === "Dream Entry") {
+    unlocked = true;
+    document.getElementById("gate").style.display = "none";
+    showPage("home");
+  } else {
+    error.innerHTML = "ACCESS DENIED";
+  }
 }
 
-if(page==="departments"){
-c.innerHTML = `
-<div class="container">
-<div class="card">
-<h2>Departments</h2>
+function showPage(page) {
+  const content = document.getElementById("content");
 
-<ul>
-<li>Retail Products Division</li>
-<li>Human Resources</li>
-<li>Behavioral Research</li>
-<li>Neural Mapping</li>
-<li>Wonderlands Operations</li>
-<li>Return Processing</li>
-</ul>
+  if (!unlocked) {
+    return;
+  }
 
-<p class="small">
-Cross-department access requires Level 3 clearance.
-</p>
-</div>
-</div>
-`;
+  if (page === "home") {
+    content.innerHTML = `
+      <h2>Employee Portal</h2>
+
+      <div class="status">
+        USER STATUS: ACTIVE<br>
+        ACCESS LEVEL: EMPLOYEE<br>
+        LAST UPDATE: 12/11/2005<br>
+        SYSTEM MODE: ARCHIVE<br>
+        BACKUP NODE: DES-PRIVATE-02
+      </div>
+
+      <p>
+        Internal employee system restored from backup. Some pages may contain
+        incomplete records, outdated notices, or duplicate entries.
+      </p>
+
+      <div class="memo">
+        <div class="memo-title">Daily Operations Notice</div>
+        All scheduled DED-01 support operations remain suspended.
+        Employees should not process customer claims related to dream retention,
+        missing session records, or unreturned users.
+      </div>
+
+      <div class="memo">
+        <div class="memo-title">Maintenance Message</div>
+        The east stairwell camera is still showing a floor that is not present
+        on the current building plan. Do not dispatch maintenance alone.
+      </div>
+    `;
+  }
+
+  if (page === "manual") {
+    content.innerHTML = `
+      <h2>Employee Manual</h2>
+
+      <div class="log">
+        SECTION 1 — GENERAL CONDUCT<br><br>
+        Employees must wear identification badges during all scheduled shifts.<br>
+        Employees must sign out before leaving restricted work areas.<br>
+        Employees must not discuss internal room classifications with customers.<br><br>
+
+        SECTION 2 — DOORS AND HALLWAYS<br><br>
+        Do not prop open security doors unless instructed by maintenance.<br>
+        If a door opens onto an area not shown on the floor plan, leave it open and report it.<br>
+        If a door has no handle on your side, do not attempt to force it.<br>
+        If a door opens directly into an exterior space, confirm the building floor before proceeding.<br><br>
+
+        SECTION 3 — AFTER-HOURS MOVEMENT<br><br>
+        Employees working after 03:00 must remain in assigned areas.<br>
+        Do not follow voices from unassigned rooms.<br>
+        Do not respond to knocking from rooms marked vacant.<br>
+        Do not enter a hallway that appears longer than documented.<br><br>
+
+        SECTION 4 — VISITORS<br><br>
+        Do not admit visitors without appointment records.<br>
+        If the visitor knows your name but is not listed, contact the night operator.<br>
+        If the visitor appears on camera but not at reception, lock your workstation.<br><br>
+
+        SECTION 5 — INCIDENT REPORTING<br><br>
+        Report all missing time over 4 minutes.<br>
+        Report all lights that remain on after disconnection.<br>
+        Report all rooms that appear only in camera records.
+      </div>
+    `;
+  }
+
+  if (page === "training") {
+    currentSlide = 0;
+    content.innerHTML = `
+      <h2>Employee Training Slides</h2>
+
+      <div class="status">
+        INTERNAL TRAINING MATERIAL<br>
+        ARCHIVED COPY — 2005<br>
+        SLIDE DECK: ORIENTATION-04
+      </div>
+
+      <div id="slideBox" class="slide-box"></div>
+
+      <br>
+      <button class="submit-btn" onclick="prevSlide()">Previous</button>
+      <button class="submit-btn" onclick="nextSlide()">Next</button>
+    `;
+
+    renderSlide();
+  }
+
+  if (page === "rooms") {
+    content.innerHTML = `
+      <h2>Room Index</h2>
+
+      <table>
+        <tr><th>Room</th><th>Assigned Use</th><th>Status</th><th>Notes</th></tr>
+        <tr><td>A-01</td><td>Reception Storage</td><td>Normal</td><td>Main building</td></tr>
+        <tr><td>A-02</td><td>Copy Room</td><td>Normal</td><td>Paper jam unresolved</td></tr>
+        <tr><td>B-04</td><td>Employee Lockers</td><td>Normal</td><td>Lights intermittent</td></tr>
+        <tr><td>B-12</td><td>Storage</td><td class="warn">Door open</td><td>Door should face west wall</td></tr>
+        <tr><td>C-07</td><td>Break Room</td><td>Lights on</td><td>Vending machine active after power loss</td></tr>
+        <tr><td>D-03</td><td>Maintenance</td><td>Locked</td><td>Key missing from board</td></tr>
+        <tr><td>E-11</td><td>Records</td><td>Partial</td><td>Cabinet numbers do not match</td></tr>
+        <tr><td>W-01</td><td>Test Instance</td><td>Inactive</td><td>No feed</td></tr>
+        <tr><td>W-02</td><td>Test Instance</td><td>Inactive</td><td>No feed</td></tr>
+        <tr><td>W-03</td><td>Test Instance</td><td>Inactive</td><td>No feed</td></tr>
+        <tr><td>W-04</td><td>—</td><td class="restricted">No assignment found</td><td>Appears on camera feed only</td></tr>
+      </table>
+
+      <div class="log">
+        Note: W-series rooms are not part of the employee wing.<br>
+        Note: W-04 has no door record, no badge reader, and no floor listing.
+      </div>
+    `;
+  }
+
+  if (page === "floor") {
+    content.innerHTML = `
+      <h2>Floor Plan</h2>
+
+      <p>Building floor map unavailable in archived mode.</p>
+
+      <table>
+        <tr><th>Area</th><th>Status</th><th>Notes</th></tr>
+        <tr><td>Reception</td><td>Listed</td><td>Main entry</td></tr>
+        <tr><td>Research Wing</td><td>Listed</td><td>Restricted after 21:00</td></tr>
+        <tr><td>North Hall</td><td>Listed</td><td>Length varies between records</td></tr>
+        <tr><td>East Stairwell</td><td>Listed</td><td>Steps continue beyond camera view</td></tr>
+        <tr><td>Storage B</td><td>Listed</td><td>Door reported open</td></tr>
+        <tr><td>Room W-04</td><td>Not listed</td><td>Appears on camera feed only</td></tr>
+      </table>
+
+      <div class="log">
+        FLOOR PLAN ERROR:<br>
+        Camera 03 reports stairwell continuation beyond mapped floor.<br>
+        Camera 05 reports door exterior inconsistent with building boundary.<br>
+        Manual correction unavailable.
+      </div>
+    `;
+  }
+
+  if (page === "incidents") {
+    content.innerHTML = `
+      <h2>Incident Log</h2>
+
+      <div class="log">
+        [12/11/2005 02:44] Night operator reports door open in Storage B.<br>
+        [12/11/2005 02:46] Door not visible from west corridor camera.<br>
+        [12/11/2005 02:51] Maintenance unable to locate Storage B from hallway.<br>
+        [12/11/2005 02:58] Badge reader logs employee arrival before scheduled shift.<br>
+        [12/11/2005 03:03] Employee badge detected near W-04.<br>
+        [12/11/2005 03:07] Camera shows employee leaving room before entering.<br>
+        [12/11/2005 03:09] Reception phone rings from disconnected extension.<br>
+        [12/11/2005 03:12] Portal backup started.<br>
+        [12/11/2005 03:14] External store pages locked.<br>
+        [12/11/2005 03:19] Manual updated: do not close unmatched doors.<br>
+        [12/11/2005 03:21] W-04 appears on room index for 11 seconds.<br>
+        [12/11/2005 03:22] Employee detected.<br>
+        [12/11/2005 03:22] Employee not found.<br>
+        [12/11/2005 03:23] Backup interrupted.
+      </div>
+    `;
+  }
+
+  if (page === "mail") {
+    content.innerHTML = `
+      <h2>Internal Mail</h2>
+
+      <div class="folder" onclick="openMail('operator')">
+        From: Night Operator — Subject: Storage B
+      </div>
+
+      <div class="folder" onclick="openMail('hr')">
+        From: Human Resources — Subject: Employee Orientation Revision
+      </div>
+
+      <div class="folder" onclick="openMail('maintenance')">
+        From: Maintenance — Subject: East Stairwell
+      </div>
+
+      <div class="folder" onclick="openMail('blank')">
+        From: — Subject: 
+      </div>
+
+      <div id="mailContent"></div>
+    `;
+  }
+
+  if (page === "admin") {
+    content.innerHTML = `
+      <h2>Admin Access</h2>
+
+      <p>Administrator credentials required.</p>
+
+      <input id="adminPass" type="password" placeholder="Password">
+      <button class="submit-btn" onclick="checkAdminPass()">Login</button>
+
+      <div id="adminMessage" class="log" style="display:none;"></div>
+    `;
+  }
 }
 
-if(page==="benefits"){
-c.innerHTML = `
-<div class="container">
-<div class="card">
-<h2>Employee Benefits</h2>
+function renderSlide() {
+  const slide = slides[currentSlide];
+  const box = document.getElementById("slideBox");
 
-<ul>
-<li>Dental Coverage</li>
-<li>Vision Coverage</li>
-<li>Retirement Plan</li>
-<li>Dream Exposure Compensation</li>
-<li>Extended Session Family Support</li>
-<li>Return Counseling</li>
-</ul>
-
-<p class="small">
-Benefits may vary after cognitive duplication events.
-</p>
-</div>
-</div>
-`;
+  box.innerHTML = `
+    SLIDE ${currentSlide + 1}/${slides.length}<br><br>
+    <b>${slide.title}</b><br><br>
+    ${slide.body}
+  `;
 }
 
-if(page==="security"){
-c.innerHTML = `
-<div class="container">
-<div class="card">
-<h2>Security Guidelines</h2>
-
-<ul>
-<li>Never follow unbadged personnel.</li>
-<li>Report duplicate badge scans immediately.</li>
-<li>Returned subjects may not enter cafeterias.</li>
-<li>If you encounter yourself, contact Security.</li>
-<li>Do not remain in Wonderlands after recall tone.</li>
-</ul>
-</div>
-</div>
-`;
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  renderSlide();
 }
 
-if(page==="directory"){
-c.innerHTML = `
-<div class="container">
-<div class="card">
-<h2>Employee Directory</h2>
-
-<ul>
-<li>M. Hart — Senior Architect</li>
-<li>Elena Voss — Transit Lead</li>
-<li>Daniel Crowe — Return Processing</li>
-<li>Sarah Lin — Memory Health</li>
-<li>12 Records Unavailable</li>
-</ul>
-
-<p class="small">
-Some personnel files archived after Incident 11/12.
-</p>
-</div>
-</div>
-`;
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  renderSlide();
 }
 
+function openMail(mail) {
+  const box = document.getElementById("mailContent");
+
+  if (mail === "operator") {
+    box.innerHTML = `
+      <div class="log">
+        TO: Maintenance<br>
+        FROM: Night Operator<br>
+        SUBJECT: Storage B<br><br>
+        Storage B is open again. I can see the inside from camera 05,
+        but the hallway camera shows a blank wall where the door should be.<br><br>
+        Do not send anyone until morning.
+      </div>
+    `;
+  }
+
+  if (mail === "hr") {
+    box.innerHTML = `
+      <div class="log">
+        TO: All Staff<br>
+        FROM: Human Resources<br>
+        SUBJECT: Employee Orientation Revision<br><br>
+        Please review the updated slide regarding visitors.
+        We have received reports of unknown persons requesting entry by employee name.<br><br>
+        Do not engage directly.
+      </div>
+    `;
+  }
+
+  if (mail === "maintenance") {
+    box.innerHTML = `
+      <div class="log">
+        TO: Night Operator<br>
+        FROM: Maintenance<br>
+        SUBJECT: East Stairwell<br><br>
+        We counted 18 steps from floor 2 to floor 3.<br>
+        Camera playback shows 42 steps during the same period.<br><br>
+        We are not going back tonight.
+      </div>
+    `;
+  }
+
+  if (mail === "blank") {
+    box.innerHTML = `
+      <div class="log">
+        TO: You<br>
+        FROM: <br>
+        SUBJECT: <br><br>
+        you left it open
+      </div>
+    `;
+  }
 }
 
+function checkAdminPass() {
+  const pass = document.getElementById("adminPass").value;
+  const msg = document.getElementById("adminMessage");
+
+  msg.style.display = "block";
+
+  if (pass.toLowerCase() === "b-12") {
+    adminUnlocked = true;
+    msg.innerHTML = `
+      ACCESS GRANTED<br><br>
+      ADMIN NOTE:<br>
+      The door was not opened from this side.<br>
+      Do not remove W-04 from the room index again.<br><br>
+      FINAL BACKUP LINE:<br>
+      if the room appears empty, check the camera behind you
+    `;
+  } else {
+    msg.innerHTML = "ACCESS DENIED";
+  }
+}
 </script>
 
 </body>
