@@ -3,155 +3,194 @@
 <head>
   <title>Dream Entry Systems - Employee Portal</title>
   <meta charset="UTF-8">
+
   <style>
     body {
       margin: 0;
-      background: #d6d6d6;
+      background: #b9c7d6;
       font-family: Arial, Verdana, sans-serif;
       font-size: 13px;
-      color: #111;
+      color: #1b1b1b;
     }
 
     a {
-      color: #0000ee;
+      color: #003399;
       text-decoration: underline;
       cursor: pointer;
     }
 
-    .container {
-      width: 930px;
+    .page-wrap {
+      width: 980px;
       margin: 18px auto;
+    }
+
+    .container {
       background: white;
-      border: 1px solid #444;
-      box-shadow: 4px 4px 0 #777;
+      border: 1px solid #3b4c5c;
+      box-shadow: 0 0 10px rgba(0,0,0,0.35);
     }
 
     .topbar {
-      background: #222;
-      color: #eee;
-      padding: 5px 10px;
+      background: linear-gradient(#263747, #111a22);
+      color: #eeeeee;
+      padding: 6px 12px;
       font-size: 11px;
       text-align: right;
+      border-bottom: 1px solid #000;
     }
 
     .header {
-      background: linear-gradient(#ffffff, #cfcfcf);
-      padding: 14px;
-      border-bottom: 2px solid #222;
+      background: linear-gradient(#ffffff, #dde5ee);
+      padding: 18px 18px 14px 18px;
+      border-bottom: 3px solid #263747;
+      position: relative;
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
       font-family: Georgia, serif;
-      color: #222;
+      color: #182d42;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 0 #fff;
     }
 
     .subtitle {
-      color: #555;
+      color: #586675;
       font-size: 12px;
       margin-top: 4px;
     }
 
+    .header-badge {
+      position: absolute;
+      right: 18px;
+      top: 20px;
+      background: #f1f5f8;
+      border: 1px solid #9aaabc;
+      padding: 7px 10px;
+      font-size: 11px;
+      color: #334455;
+      text-align: right;
+    }
+
     .notice {
-      background: #ffffcc;
-      color: #663300;
+      background: linear-gradient(#fff7bf, #ffe577);
+      color: #6b3a00;
       font-weight: bold;
       text-align: center;
-      padding: 7px;
-      border-top: 1px solid #aaa;
-      border-bottom: 1px solid #aaa;
+      padding: 8px;
+      border-top: 1px solid #c9a200;
+      border-bottom: 1px solid #c9a200;
     }
 
     .nav {
-      background: #e8e8e8;
-      padding: 7px;
+      background: linear-gradient(#f8f8f8, #d8d8d8);
+      padding: 8px;
       text-align: center;
-      border-bottom: 1px solid #aaa;
+      border-bottom: 1px solid #9da8b4;
     }
 
     .button {
       display: inline-block;
-      padding: 4px 9px;
+      padding: 5px 11px;
       margin: 2px;
-      background: #f5f5f5;
-      border: 2px outset #ddd;
+      background: linear-gradient(#ffffff, #d7dce1);
+      border: 1px solid #7d8a96;
+      border-radius: 2px;
       cursor: pointer;
       font-size: 12px;
+      color: #1b2d40;
+      box-shadow: inset 1px 1px 0 #fff;
     }
 
     .button:hover {
-      background: #ffffff;
+      background: linear-gradient(#ffffff, #c8d5e2);
+      color: #000;
     }
 
     .main {
       display: flex;
-      padding: 10px;
-      gap: 10px;
+      padding: 12px;
+      gap: 12px;
+      background: #f5f7f9;
     }
 
     .sidebar {
-      width: 205px;
-      background: #f1f1f1;
-      border: 1px solid #aaa;
+      width: 225px;
+      background: #edf1f5;
+      border: 1px solid #a8b4c0;
       padding: 8px;
     }
 
     .side-title {
-      background: #333;
+      background: linear-gradient(#344b61, #1d2f40);
       color: white;
-      padding: 5px;
+      padding: 6px;
       font-weight: bold;
       font-size: 12px;
       margin: -8px -8px 8px -8px;
+      border-bottom: 1px solid #111;
     }
 
     .side-box {
       background: white;
-      border: 1px solid #aaa;
-      padding: 7px;
-      margin-bottom: 10px;
+      border: 1px solid #b5bec8;
+      padding: 8px;
+      margin-bottom: 11px;
       font-size: 12px;
+      line-height: 1.35;
     }
 
     .content {
       flex: 1;
-      border: 1px solid #999;
-      padding: 12px;
-      min-height: 470px;
-      background: #fff;
+      border: 1px solid #a8b4c0;
+      padding: 15px;
+      min-height: 530px;
+      background: white;
+      box-shadow: inset 0 0 0 1px #f1f1f1;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      font-size: 21px;
+      color: #1d2f40;
+      border-bottom: 1px solid #c7d0da;
+      padding-bottom: 7px;
     }
 
     .status {
-      background: black;
-      color: #66ff66;
-      font-family: monospace;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #333;
+      background: #061018;
+      color: #76ff76;
+      font-family: Consolas, "Courier New", monospace;
+      padding: 11px;
+      margin: 11px 0;
+      border: 1px solid #222;
+      line-height: 1.45;
+      box-shadow: inset 0 0 8px rgba(0,255,80,0.12);
     }
 
     .log {
-      background: #111;
-      color: #ccc;
-      font-family: monospace;
-      padding: 10px;
-      margin: 10px 0;
+      background: #101010;
+      color: #d0d0d0;
+      font-family: Consolas, "Courier New", monospace;
+      padding: 12px;
+      margin: 11px 0;
       border: 1px solid #333;
-      line-height: 1.45;
+      line-height: 1.48;
     }
 
     .memo {
-      border: 1px solid #aaa;
-      background: #f7f7f7;
-      padding: 10px;
-      margin: 10px 0;
+      border: 1px solid #b9c4cf;
+      background: linear-gradient(#ffffff, #f0f4f8);
+      padding: 11px;
+      margin: 12px 0;
     }
 
     .memo-title {
       font-weight: bold;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+      color: #24384c;
+      border-bottom: 1px solid #c8d2dd;
+      padding-bottom: 6px;
       margin-bottom: 8px;
     }
 
@@ -160,88 +199,99 @@
       border-collapse: collapse;
       font-size: 12px;
       margin-top: 10px;
+      background: white;
     }
 
     td, th {
-      border: 1px solid #aaa;
-      padding: 6px;
+      border: 1px solid #aeb9c4;
+      padding: 7px;
       vertical-align: top;
     }
 
     th {
-      background: #ddd;
+      background: linear-gradient(#eef3f8, #d6dde5);
+      color: #223344;
+      text-align: left;
     }
 
     input {
       font-family: Arial, Verdana, sans-serif;
       font-size: 12px;
-      padding: 5px;
-      border: 1px solid #999;
+      padding: 6px;
+      border: 1px solid #8f9dad;
+      background: #fff;
     }
 
     textarea {
       font-family: Arial, Verdana, sans-serif;
       font-size: 12px;
-      padding: 5px;
-      border: 1px solid #999;
+      padding: 6px;
+      border: 1px solid #8f9dad;
       width: 96%;
       height: 90px;
     }
 
     .submit-btn {
-      border: 2px outset #ddd;
-      background: #eee;
-      padding: 5px 12px;
+      border: 1px solid #7d8a96;
+      background: linear-gradient(#ffffff, #d7dce1);
+      padding: 6px 13px;
       cursor: pointer;
       margin: 3px;
       font-size: 12px;
+      border-radius: 2px;
+      color: #1b2d40;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(#ffffff, #c8d5e2);
     }
 
     .small {
       font-size: 11px;
-      color: #666;
+      color: #66717c;
     }
 
     .restricted {
-      color: darkred;
+      color: #9b0000;
       font-weight: bold;
     }
 
     .ok {
-      color: darkgreen;
+      color: #0b6b18;
       font-weight: bold;
     }
 
     .warn {
-      color: darkred;
+      color: #9b0000;
       font-weight: bold;
     }
 
     .folder {
-      background: #ffffee;
-      border: 1px solid #aaa;
-      padding: 8px;
-      margin: 6px 0;
+      background: linear-gradient(#fffffb, #fff4ce);
+      border: 1px solid #c9ba7a;
+      padding: 9px;
+      margin: 7px 0;
       cursor: pointer;
+      box-shadow: inset 1px 1px 0 #fff;
     }
 
     .folder:hover {
-      background: #fff8cc;
+      background: #fff3b0;
     }
 
     .footer {
-      background: #e8e8e8;
-      border-top: 1px solid #aaa;
+      background: linear-gradient(#f3f3f3, #d6d6d6);
+      border-top: 1px solid #9da8b4;
       color: #555;
       font-size: 11px;
       text-align: center;
-      padding: 12px;
+      padding: 13px;
     }
 
     .gate {
       position: fixed;
       inset: 0;
-      background: #d6d6d6;
+      background: radial-gradient(circle at top, #d9e5ef, #8498aa);
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -249,70 +299,94 @@
     }
 
     .gate-box {
-      width: 540px;
+      width: 560px;
       background: white;
-      border: 1px solid #777;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      border: 1px solid #536575;
+      box-shadow: 0 0 24px rgba(0,0,0,0.45);
     }
 
     .gate-top {
-      border-top: 8px solid #222;
+      background: linear-gradient(#ffffff, #dce6ef);
+      border-top: 8px solid #263747;
       padding: 18px 24px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #a6b2bf;
     }
 
     .gate-title {
-      font-size: 19px;
+      font-size: 21px;
       font-weight: bold;
       text-transform: uppercase;
+      color: #1d2f40;
+      letter-spacing: 0.5px;
     }
 
     .gate-subtitle {
       margin-top: 6px;
       font-size: 13px;
-      color: #555;
+      color: #586675;
     }
 
     .gate-content {
-      padding: 24px;
+      padding: 25px;
       font-size: 14px;
       line-height: 1.5;
     }
 
     .gate-error {
-      color: darkred;
+      color: #9b0000;
       font-size: 12px;
       margin-top: 12px;
-      font-family: monospace;
-    }
-
-    .blink {
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
+      font-family: Consolas, "Courier New", monospace;
     }
 
     .slide-box {
-      background: #111;
-      color: #ccc;
-      font-family: monospace;
-      padding: 14px;
+      background: #101010;
+      color: #d0d0d0;
+      font-family: Consolas, "Courier New", monospace;
+      padding: 16px;
       border: 1px solid #333;
-      min-height: 190px;
+      min-height: 210px;
       line-height: 1.55;
     }
 
     .badge {
       display: inline-block;
-      background: #333;
+      background: linear-gradient(#4c5f73, #263747);
       color: white;
-      padding: 2px 6px;
+      padding: 3px 7px;
       margin: 2px;
       font-size: 11px;
+      border-radius: 2px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .dashboard-card {
+      border: 1px solid #b9c4cf;
+      background: linear-gradient(#ffffff, #f1f5f9);
+      padding: 10px;
+      min-height: 70px;
+    }
+
+    .dashboard-card b {
+      color: #25384c;
+    }
+
+    .file-card {
+      border: 1px solid #b5bec8;
+      background: #f9fbfd;
+      padding: 9px;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .file-card:hover {
+      background: #edf5ff;
     }
   </style>
 </head>
@@ -346,74 +420,83 @@
   </div>
 </div>
 
-<div class="container">
+<div class="page-wrap">
+  <div class="container">
 
-  <div class="topbar">
-    Employee Network | DES-PRIVATE-02 | Session: Temporary | Secure Backup Mode
-  </div>
+    <div class="topbar">
+      Employee Network | DES-PRIVATE-02 | Session: Temporary | Secure Backup Mode
+    </div>
 
-  <div class="header">
-    <div class="logo">Dream Entry Systems</div>
-    <div class="subtitle">Private Employee Portal — Internal Use Only</div>
-  </div>
-
-  <div class="notice">
-    NOTICE: Archived copy restored from internal backup — 12/11/2005
-  </div>
-
-  <div class="nav">
-    <span class="button" onclick="showPage('home')">Home</span>
-    <span class="button" onclick="showPage('manual')">Manual</span>
-    <span class="button" onclick="showPage('training')">Training Slides</span>
-    <span class="button" onclick="showPage('rooms')">Rooms</span>
-    <span class="button" onclick="showPage('floor')">Floor Plan</span>
-    <span class="button" onclick="showPage('incidents')">Incidents</span>
-    <span class="button" onclick="showPage('mail')">Internal Mail</span>
-    <span class="button" onclick="showPage('admin')">Admin</span>
-  </div>
-
-  <div class="main">
-
-    <div class="sidebar">
-      <div class="side-title">System Status</div>
-      <div class="side-box">
-        Portal: <span class="ok">ONLINE</span><br>
-        Backup: PARTIAL<br>
-        Camera Link: ACTIVE<br>
-        W-04: <span class="restricted">UNLISTED</span><br>
-        Storage B: OPEN<br>
-        North Hall: VARIABLE
-      </div>
-
-      <div class="side-title">Employee Tools</div>
-      <div class="side-box">
-        <a onclick="showPage('manual')">Manual</a><br>
-        <a onclick="showPage('training')">Training Slides</a><br>
-        <a onclick="showPage('rooms')">Room Index</a><br>
-        <a onclick="showPage('incidents')">Incident Log</a><br>
-        <a onclick="showPage('mail')">Internal Mail</a>
-      </div>
-
-      <div class="side-title">Shift Notice</div>
-      <div class="side-box">
-        Night employees must remain in assigned areas after 03:00.
-      </div>
-
-      <div class="side-title">Reminder</div>
-      <div class="side-box">
-        Do not close doors that open onto unlisted areas.
+    <div class="header">
+      <div class="logo">Dream Entry Systems</div>
+      <div class="subtitle">Private Employee Portal — Internal Use Only</div>
+      <div class="header-badge">
+        BACKUP COPY<br>
+        Restored: 12/11/2005<br>
+        Node: DES-PRIVATE-02
       </div>
     </div>
 
-    <div id="content" class="content"></div>
+    <div class="notice">
+      NOTICE: Archived copy restored from internal backup — some records may be incomplete
+    </div>
+
+    <div class="nav">
+      <span class="button" onclick="showPage('home')">Home</span>
+      <span class="button" onclick="showPage('manual')">Manual</span>
+      <span class="button" onclick="showPage('training')">Training Slides</span>
+      <span class="button" onclick="showPage('rooms')">Rooms</span>
+      <span class="button" onclick="showPage('floor')">Floor Plan</span>
+      <span class="button" onclick="showPage('incidents')">Incidents</span>
+      <span class="button" onclick="showPage('mail')">Internal Mail</span>
+      <span class="button" onclick="showPage('files')">Recovered Files</span>
+      <span class="button" onclick="showPage('admin')">Admin</span>
+    </div>
+
+    <div class="main">
+
+      <div class="sidebar">
+        <div class="side-title">System Status</div>
+        <div class="side-box">
+          Portal: <span class="ok">ONLINE</span><br>
+          Backup: PARTIAL<br>
+          Camera Link: ACTIVE<br>
+          W-04: <span class="restricted">UNLISTED</span><br>
+          Storage B: OPEN<br>
+          North Hall: VARIABLE
+        </div>
+
+        <div class="side-title">Employee Tools</div>
+        <div class="side-box">
+          <a onclick="showPage('manual')">Manual</a><br>
+          <a onclick="showPage('training')">Training Slides</a><br>
+          <a onclick="showPage('rooms')">Room Index</a><br>
+          <a onclick="showPage('incidents')">Incident Log</a><br>
+          <a onclick="showPage('mail')">Internal Mail</a><br>
+          <a onclick="showPage('files')">Recovered Files</a>
+        </div>
+
+        <div class="side-title">Shift Notice</div>
+        <div class="side-box">
+          Night employees must remain in assigned areas after 03:00.
+        </div>
+
+        <div class="side-title">Reminder</div>
+        <div class="side-box">
+          Do not close doors that open onto unlisted areas.
+        </div>
+      </div>
+
+      <div id="content" class="content"></div>
+
+    </div>
+
+    <div class="footer">
+      © 2005 Dream Entry Systems Inc. — Employee Portal Backup<br>
+      Internal file server: DES-PRIVATE-02 | Last restore packet: 03:22
+    </div>
 
   </div>
-
-  <div class="footer">
-    © 2005 Dream Entry Systems Inc. — Employee Portal Backup<br>
-    Internal file server: DES-PRIVATE-02 | Last restore packet: 03:22
-  </div>
-
 </div>
 
 <script>
@@ -496,10 +579,24 @@ function showPage(page) {
         BACKUP NODE: DES-PRIVATE-02
       </div>
 
-      <p>
-        Internal employee system restored from backup. Some pages may contain
-        incomplete records, outdated notices, or duplicate entries.
-      </p>
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <b>Portal Status</b><br><br>
+          Internal employee system restored from backup.
+        </div>
+        <div class="dashboard-card">
+          <b>Camera Network</b><br><br>
+          Camera link active. W-04 remains unlisted.
+        </div>
+        <div class="dashboard-card">
+          <b>Room Records</b><br><br>
+          Several room records are incomplete or duplicated.
+        </div>
+        <div class="dashboard-card">
+          <b>Current Notice</b><br><br>
+          DED-01 support operations remain suspended.
+        </div>
+      </div>
 
       <div class="memo">
         <div class="memo-title">Daily Operations Notice</div>
@@ -593,7 +690,8 @@ function showPage(page) {
 
       <div class="log">
         Note: W-series rooms are not part of the employee wing.<br>
-        Note: W-04 has no door record, no badge reader, and no floor listing.
+        Note: W-04 has no door record, no badge reader, and no floor listing.<br>
+        Note: Storage B references are indexed under B-series room records.
       </div>
     `;
   }
@@ -662,11 +760,35 @@ function showPage(page) {
         From: Maintenance — Subject: East Stairwell
       </div>
 
+      <div class="folder" onclick="openMail('hart')">
+        From: M. Hart — Subject: Badge error
+      </div>
+
       <div class="folder" onclick="openMail('blank')">
-        From: — Subject: 
+        From: — Subject:
       </div>
 
       <div id="mailContent"></div>
+    `;
+  }
+
+  if (page === "files") {
+    content.innerHTML = `
+      <h2>Recovered Files</h2>
+
+      <p>Recovered from partial backup. Some files require administrator clearance.</p>
+
+      <div class="file-card" onclick="openRecoveredFile('public')">
+        File: employee_notice_12-11-2005.txt<br>
+        Clearance: Employee
+      </div>
+
+      <div class="file-card" onclick="openRecoveredFile('locked')">
+        File: M_HART_RECORD_PARTIAL.bak<br>
+        Clearance: Administrator
+      </div>
+
+      <div id="fileOutput"></div>
     `;
   }
 
@@ -747,15 +869,82 @@ function openMail(mail) {
     `;
   }
 
+  if (mail === "hart") {
+    box.innerHTML = `
+      <div class="log">
+        TO: System Administration<br>
+        FROM: M. Hart<br>
+        SUBJECT: Badge error<br><br>
+        My badge keeps appearing in rooms I have not entered.
+        The last error listed me near W-04, but W-04 does not exist on my floor map.<br><br>
+        Employee ID on the failed record begins with DES-44. Please remove duplicate entries.
+      </div>
+    `;
+  }
+
   if (mail === "blank") {
     box.innerHTML = `
       <div class="log">
         TO: You<br>
-        FROM: <br>
-        SUBJECT: <br><br>
+        FROM:<br>
+        SUBJECT:<br><br>
         you left it open
       </div>
     `;
+  }
+}
+
+function openRecoveredFile(file) {
+  const box = document.getElementById("fileOutput");
+
+  if (file === "public") {
+    box.innerHTML = `
+      <div class="log">
+        [RECOVERED FILE]<br><br>
+        employee_notice_12-11-2005.txt<br><br>
+        All employees are reminded that archived room records must not be manually corrected.
+        Incorrect room labels should be reported to Systems Administration only.<br><br>
+        Current unresolved labels:<br>
+        Storage B<br>
+        W-04<br>
+        North Hall extension
+      </div>
+    `;
+  }
+
+  if (file === "locked") {
+    if (!adminUnlocked) {
+      box.innerHTML = `
+        <div class="log">
+          ACCESS DENIED<br>
+          Administrator clearance required.
+        </div>
+      `;
+    } else {
+      box.innerHTML = `
+        <div class="log">
+          [RECOVERED BACKUP FILE — 12/11/2005]<br><br>
+          File: M_HART_RECORD_PARTIAL.bak<br><br>
+          Name: M. HART<br>
+          Department: Night Operations<br>
+          Access Level: 3<br><br>
+
+          Last recorded activity:<br>
+          03:22 — Assigned to Storage B<br>
+          03:22 — Badge detected near W-04<br>
+          03:22 — Camera confirms presence<br>
+          03:22 — Location error<br><br>
+
+          User ID: DES-44721<br><br>
+
+          Status: ACTIVE<br>
+          Physical presence: NOT FOUND<br><br>
+
+          Note:<br>
+          User ID still valid in system.
+        </div>
+      `;
+    }
   }
 }
 
@@ -769,11 +958,8 @@ function checkAdminPass() {
     adminUnlocked = true;
     msg.innerHTML = `
       ACCESS GRANTED<br><br>
-      ADMIN NOTE:<br>
-      The door was not opened from this side.<br>
-      Do not remove W-04 from the room index again.<br><br>
-      FINAL BACKUP LINE:<br>
-      if the room appears empty, check the camera behind you
+      Administrator clearance active.<br><br>
+      Recovered files may now be opened from the Recovered Files page.
     `;
   } else {
     msg.innerHTML = "ACCESS DENIED";
